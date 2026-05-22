@@ -11,9 +11,7 @@ class WealthIQ extends StatelessWidget {
       title: 'WealthIQ',
       theme: ThemeData(
         brightness: Brightness.dark,
-        primaryColor: const Color(0xFF00FF88),
         scaffoldBackgroundColor: const Color(0xFF0B1F3A),
-        fontFamily: 'Roboto',
       ),
       home: const HomeScreen(),
     );
