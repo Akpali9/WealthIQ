@@ -10,18 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Get project files
+      # 1. Get code
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Setup Java (required for Android build)
+      # 2. Setup Java (required for Android)
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      # 3. Setup Flutter (FIXED VERSION)
+      # 3. Setup Flutter (FIXED)
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -29,17 +29,19 @@ jobs:
           channel: stable
           cache: true
 
-      # 4. Install dependencies
+      # 4. Clean project (prevents lock/build issues)
+      - name: Clean project
+        run: flutter clean
+
+      # 5. Install dependencies
       - name: Install dependencies
         run: flutter pub get
-
-   
 
       # 6. Build release APK
       - name: Build APK
         run: flutter build apk --release
 
-      # 7. Upload APK as artifact
+      # 7. Upload APK artifact
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
