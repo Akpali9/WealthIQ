@@ -1,5 +1,0 @@
-packages:
-  flutter:
-    version: "3.22.0"
-  sqflite:
-    version: "2.3.3"
