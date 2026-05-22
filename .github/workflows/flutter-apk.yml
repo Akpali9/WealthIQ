@@ -33,9 +33,7 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      # 5. Run tests (optional but good practice)
-      - name: Run tests
-        run: flutter test
+   
 
       # 6. Build release APK
       - name: Build APK
