@@ -80,7 +80,11 @@ class DatabaseHelper {
     final db = await instance.database;
     return await db.query('goals', orderBy: 'id DESC');
   }
-
+Future<Database> get database async {
+  if (_database != null) return _database!;
+  _database = await _initDB('wealthiq.db');
+  return _database!;
+}
   Future<int> updateGoal(int id, double savedAmount) async {
     final db = await instance.database;
     return await db.update(
