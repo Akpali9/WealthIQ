@@ -1,0 +1,10 @@
+<dict>
+    <key>CFBundleName</key>
+    <string>WealthIQ</string>
+
+    <key>CFBundleDisplayName</key>
+    <string>WealthIQ</string>
+
+    <key>UIApplicationSupportsIndirectInputEvents</key>
+    <true/>
+</dict>
