@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../services/finance_provider.dart';
 import 'dashboard_screen.dart';
 import 'goals_screen.dart';
 import 'learn_screen.dart';
@@ -13,6 +15,15 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int index = 0;
+
+  @override
+  void initState() {
+    super.initState();
+
+    Future.delayed(Duration.zero, () {
+      Provider.of<FinanceProvider>(context, listen: false).loadData();
+    });
+  }
 
   final screens = const [
     DashboardScreen(),
@@ -29,8 +40,6 @@ class _HomeScreenState extends State<HomeScreen> {
         currentIndex: index,
         onTap: (i) => setState(() => index = i),
         selectedItemColor: const Color(0xFF00FF88),
-        unselectedItemColor: Colors.grey,
-        backgroundColor: const Color(0xFF122B4A),
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.dashboard), label: "Home"),
           BottomNavigationBarItem(icon: Icon(Icons.flag), label: "Goals"),
